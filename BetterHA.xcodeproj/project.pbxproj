@@ -17,6 +17,7 @@
 		6706B771E4F1150DC03AD904 /* UnconfiguredTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB176C56DC77D872D998B0A /* UnconfiguredTabView.swift */; };
 		6FA7CB7CE5EDB96B9EC5C1CB /* ConnectionProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5469C0AED8850843B8A95BD7 /* ConnectionProbe.swift */; };
 		7CBF21F7B149DAE588D02403 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5211931A82B9BE1574D37D60 /* ContentView.swift */; };
+		86E31D37A6A064262BF3967B /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020CF53D886D5DD6C27F13F /* SplashView.swift */; };
 		8A783EC2AFC9DC45890C592B /* HAURLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0028FB80D7472D33C41EBA2 /* HAURLFormatter.swift */; };
 		B0743AE800AC1ADD5893E3DD /* TabConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B7E803015B6AF5EA283BB2 /* TabConfigStore.swift */; };
 		BAA2975CFCDD7915651F4F0B /* ConnectionResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EACF403AFD15BC8492CC2D0 /* ConnectionResolverTests.swift */; };
@@ -49,13 +50,14 @@
 		63B7E803015B6AF5EA283BB2 /* TabConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabConfigStore.swift; sourceTree = "<group>"; };
 		6AD4300E2124A05D2AC709F1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		826C3F29A5CB335BE983D787 /* BetterHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterHAApp.swift; sourceTree = "<group>"; };
-		A41C670E1EECCC064E3B94FA /* BetterHA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41C670E1EECCC064E3B94FA /* BetterHA.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BetterHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E9559463F70C06F512E0B4 /* ConnectionFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionFailedView.swift; sourceTree = "<group>"; };
 		BE99F58E2D00C2D1F65EDFED /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C144BED03D854EFE4BCC592E /* HATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HATabView.swift; sourceTree = "<group>"; };
 		DAD3418D8F35519C19226119 /* HATabContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HATabContainerView.swift; sourceTree = "<group>"; };
 		DBA814F5C9B0977496278AC0 /* ConnectionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionResolver.swift; sourceTree = "<group>"; };
 		DCDF1FE62A8BD1824D0A4469 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E020CF53D886D5DD6C27F13F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		EBB176C56DC77D872D998B0A /* UnconfiguredTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnconfiguredTabView.swift; sourceTree = "<group>"; };
 		F0028FB80D7472D33C41EBA2 /* HAURLFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HAURLFormatter.swift; sourceTree = "<group>"; };
 		F5B4450BBD0DEA5FCD130140 /* BetterHATests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BetterHATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				DAD3418D8F35519C19226119 /* HATabContainerView.swift */,
 				C144BED03D854EFE4BCC592E /* HATabView.swift */,
 				6AD4300E2124A05D2AC709F1 /* SettingsView.swift */,
+				E020CF53D886D5DD6C27F13F /* SplashView.swift */,
 				2D4145F824C1B7DA40C266A8 /* TabConfigEditorView.swift */,
 				EBB176C56DC77D872D998B0A /* UnconfiguredTabView.swift */,
 				BE99F58E2D00C2D1F65EDFED /* WebView.swift */,
@@ -200,6 +203,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 1DB2211186FFAB726190B80D /* Build configuration list for PBXProject "BetterHA" */;
 			developmentRegion = en;
@@ -256,6 +261,7 @@
 				E5C11519C14D1FD31E91F651 /* HATabView.swift in Sources */,
 				8A783EC2AFC9DC45890C592B /* HAURLFormatter.swift in Sources */,
 				E595FCE67FD7B984F9E7C106 /* SettingsView.swift in Sources */,
+				86E31D37A6A064262BF3967B /* SplashView.swift in Sources */,
 				5F6FA0203F8BA27843F14AD3 /* TabConfig.swift in Sources */,
 				2E77081B9FD6ECEC5B556E5B /* TabConfigEditorView.swift in Sources */,
 				B0743AE800AC1ADD5893E3DD /* TabConfigStore.swift in Sources */,
@@ -347,7 +353,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y273835UA7;
 				INFOPLIST_FILE = BetterHA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -384,7 +389,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = Y273835UA7;
 				INFOPLIST_FILE = BetterHA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
