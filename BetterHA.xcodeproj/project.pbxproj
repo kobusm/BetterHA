@@ -51,6 +51,7 @@
 		6AD4300E2124A05D2AC709F1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		826C3F29A5CB335BE983D787 /* BetterHAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterHAApp.swift; sourceTree = "<group>"; };
 		A41C670E1EECCC064E3B94FA /* BetterHA.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BetterHA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8C2B23A8BA8178677E65620 /* BetterHA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BetterHA.entitlements; sourceTree = "<group>"; };
 		B9E9559463F70C06F512E0B4 /* ConnectionFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionFailedView.swift; sourceTree = "<group>"; };
 		BE99F58E2D00C2D1F65EDFED /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C144BED03D854EFE4BCC592E /* HATabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HATabView.swift; sourceTree = "<group>"; };
@@ -146,6 +147,7 @@
 		FAAE947DC075C7DEF80227D4 /* BetterHA */ = {
 			isa = PBXGroup;
 			children = (
+				B8C2B23A8BA8178677E65620 /* BetterHA.entitlements */,
 				1081F60111DC5624A8F5A861 /* Info.plist */,
 				919A7D550121EC920369212E /* App */,
 				9A14B2781D2CB391949BDA3F /* Models */,
@@ -352,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BetterHA/BetterHA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BetterHA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -388,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BetterHA/BetterHA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BetterHA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

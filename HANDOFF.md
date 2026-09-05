@@ -4,13 +4,19 @@ Custom native iOS (SwiftUI) app that replaces the stock Home Assistant companion
 app with a 4-tab WKWebView shell + Settings screen. Requirements interview is
 **closed** — no open product questions. All Swift source and test files are
 written, `xcodegen generate` has been run, and the project **builds and passes
-all 17 unit tests** (`xcodebuild build` / `test`, iPhone 17 Simulator, iOS
-26.5 runtime). Manually verified in the Simulator: 5-tab layout, unconfigured
-placeholder, Settings list, tab config editor with live URL-formatting
-preview, and the connect → timeout → "Can't connect" + Retry flow.
+all 19 unit tests** (`xcodebuild build` / `test`, iPhone 17 Simulator). Manually
+verified in the Simulator: 5-tab layout, unconfigured placeholder, Settings
+list, tab config editor with live URL-formatting preview, the connect →
+timeout → "Can't connect" + Retry flow, the launch splash screen, and the app
+icon on the home screen.
 
-Not a git repo yet — consider initializing one now that the scaffold is
-verified.
+Git repo initialized and pushed to GitHub: https://github.com/kobusm/BetterHA
+(public, `main` branch).
+
+Settings now sync across devices via iCloud Key-Value storage (see
+"Cross-device settings sync" below) — this needs a real Apple Developer Team
+assigned before it will actually sync (see that section for what's still
+pending on the user's end).
 
 ## Locked requirements (from user, not to be re-litigated)
 
@@ -90,11 +96,35 @@ the full SwiftUI view layer, asset catalog `Contents.json` files, all three
 test files, `xcodegen generate`, build, unit tests, and manual Simulator
 verification.
 
+### Cross-device settings sync
+
+`TabConfigStore` ([BetterHA/Store/TabConfigStore.swift](BetterHA/Store/TabConfigStore.swift))
+now writes tab configs to both local `UserDefaults` (fast synchronous cache)
+and `NSUbiquitousKeyValueStore` (iCloud), and listens for
+`didChangeExternallyNotification` to pick up edits made on another device.
+On init it prefers the iCloud copy over the local cache, so a fresh install
+under the same iCloud account picks up existing settings automatically.
+
+An entitlements file
+([BetterHA/BetterHA.entitlements](BetterHA/BetterHA.entitlements)) declares
+`com.apple.developer.ubiquity-kvstore-identifier`, wired into the build via
+`CODE_SIGN_ENTITLEMENTS` in `project.yml`. This builds and runs fine
+unsigned/"Sign to Run Locally" (Simulator doesn't enforce the entitlement),
+but **actual iCloud sync requires**:
+1. A real Apple Developer Team assigned in Xcode (free personal team is
+   enough for testing) — currently unsigned, no `DEVELOPMENT_TEAM` set.
+2. The iCloud / Key-Value storage capability enabled for the App ID, which
+   Xcode manages automatically once a team is assigned and the capability is
+   added via Signing & Capabilities.
+
+Until that's done, the app works exactly as before (local-only), just with
+the sync plumbing in place and unit-tested (`FakeKeyValueStore` in
+`TabConfigStoreTests.swift` covers write-through and external-change reload
+without touching real iCloud).
+
 ### Possible next steps (no open requirements questions)
 
-- Initialize git and make an initial commit.
-- Set up a real code-signing team / bundle ID if this will run on a physical
-  device (current bundle ID `com.marneweck.BetterHA` is a placeholder).
-- Add an app icon (currently empty `AppIcon.appiconset`).
+- Assign a real Apple Developer Team to actually enable iCloud sync (see
+  above) — needed for physical-device testing/distribution too.
 - Everything else in the locked spec is implemented; no further product
   decisions are pending.
