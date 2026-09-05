@@ -108,23 +108,34 @@ under the same iCloud account picks up existing settings automatically.
 An entitlements file
 ([BetterHA/BetterHA.entitlements](BetterHA/BetterHA.entitlements)) declares
 `com.apple.developer.ubiquity-kvstore-identifier`, wired into the build via
-`CODE_SIGN_ENTITLEMENTS` in `project.yml`. This builds and runs fine
-unsigned/"Sign to Run Locally" (Simulator doesn't enforce the entitlement),
-but **actual iCloud sync requires**:
-1. A real Apple Developer Team assigned in Xcode (free personal team is
-   enough for testing) — currently unsigned, no `DEVELOPMENT_TEAM` set.
-2. The iCloud / Key-Value storage capability enabled for the App ID, which
-   Xcode manages automatically once a team is assigned and the capability is
-   added via Signing & Capabilities.
+`CODE_SIGN_ENTITLEMENTS` in `project.yml`.
 
-Until that's done, the app works exactly as before (local-only), just with
-the sync plumbing in place and unit-tested (`FakeKeyValueStore` in
-`TabConfigStoreTests.swift` covers write-through and external-change reload
-without touching real iCloud).
+A real Apple Developer Team (`Y273835UA7`) and `CODE_SIGN_STYLE: Automatic`
+are now set in `project.yml` — the user assigned this via Xcode directly at
+some point (visible as an uncommitted diff in the generated `.xcodeproj`
+before it was mirrored back into `project.yml`). **Important for future
+work**: `xcodegen generate` regenerates `.xcodeproj` from `project.yml` only
+— any signing/capability change made through Xcode's Signing & Capabilities
+UI must be mirrored back into `project.yml`, or the next `xcodegen generate`
+silently reverts it.
+
+**Bug fixed 2026-09-04**: user reported that after configuring a tab on one
+device, the tab *name* synced to a second device via iCloud but the
+*local/remote addresses* did not, even though they're all part of the same
+`TabConfig` struct persisted as one JSON blob. Root cause:
+`NSUbiquitousKeyValueStore` is a property-list store, and syncing a raw
+binary `Data` blob through it is known to be unreliable compared to
+plist-native types (String/Number/Array). Fixed by base64-encoding the JSON
+to a `String` before writing to the cloud store (local `UserDefaults` cache
+is unaffected, still stores raw `Data`). Added a regression test
+(`testUpdateWritesToCloudStore`) asserting both address fields survive the
+round trip, not just the name. **Not independently verified on two real
+devices** — ask the user to confirm the fix after their next TestFlight/
+device build.
 
 ### Possible next steps (no open requirements questions)
 
-- Assign a real Apple Developer Team to actually enable iCloud sync (see
-  above) — needed for physical-device testing/distribution too.
+- Confirm the iCloud sync fix above on two real devices signed into the same
+  iCloud account.
 - Everything else in the locked spec is implemented; no further product
   decisions are pending.

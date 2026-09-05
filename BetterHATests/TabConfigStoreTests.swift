@@ -2,15 +2,19 @@ import XCTest
 @testable import BetterHA
 
 final class FakeKeyValueStore: KeyValueStoring {
-    private var storage: [String: Data] = [:]
+    private var storage: [String: Any] = [:]
 
     func data(forKey key: String) -> Data? {
-        storage[key]
+        storage[key] as? Data
+    }
+
+    func string(forKey key: String) -> String? {
+        storage[key] as? String
     }
 
     func set(_ value: Any?, forKey key: String) {
-        if let data = value as? Data {
-            storage[key] = data
+        if let value {
+            storage[key] = value
         } else {
             storage.removeValue(forKey: key)
         }
@@ -65,14 +69,19 @@ final class TabConfigStoreTests: XCTestCase {
         let store = TabConfigStore(localStore: defaults, cloudStore: cloud)
         var config = store.configs[2]
         config.name = "Garage"
+        config.localAddress = "192.168.1.20"
+        config.remoteAddress = "garage.duckdns.org"
         store.update(config)
 
         // A second store backed by the same cloud data (fresh install / new
-        // device) should pick up the settings without any local cache.
+        // device) should pick up the full config, addresses included, not
+        // just the name.
         let otherDeviceDefaults = UserDefaults(suiteName: "TabConfigStoreTests.otherDevice")
         otherDeviceDefaults?.removePersistentDomain(forName: "TabConfigStoreTests.otherDevice")
         let otherDevice = TabConfigStore(localStore: otherDeviceDefaults!, cloudStore: cloud)
         XCTAssertEqual(otherDevice.configs[2].name, "Garage")
+        XCTAssertEqual(otherDevice.configs[2].localAddress, "192.168.1.20")
+        XCTAssertEqual(otherDevice.configs[2].remoteAddress, "garage.duckdns.org")
         otherDeviceDefaults?.removePersistentDomain(forName: "TabConfigStoreTests.otherDevice")
     }
 
@@ -84,7 +93,7 @@ final class TabConfigStoreTests: XCTestCase {
         updated[0].name = "Kitchen"
         updated[0].localAddress = "10.0.0.5"
         let data = try! JSONEncoder().encode(updated)
-        cloud.set(data, forKey: "tabConfigs.v1")
+        cloud.set(data.base64EncodedString(), forKey: "tabConfigs.v1")
 
         NotificationCenter.default.post(
             name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
