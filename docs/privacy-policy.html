@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BetterHA Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+    line-height: 1.6;
+    color: #1c1c1e;
+    background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e5e5ea; background: #0f0f10; }
+    a { color: #6cb8ff; }
+    hr { border-color: #333; }
+  }
+  h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+  .effective-date { color: #777; font-size: 0.9rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  hr { margin: 2.5rem 0 1.5rem; border: none; border-top: 1px solid #ddd; }
+  .disclaimer { font-style: italic; color: #777; font-size: 0.9rem; }
+  code {
+    background: rgba(127,127,127,0.15);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    font-size: 0.92em;
+  }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy for BetterHA</h1>
+<p class="effective-date">Effective date: September 4, 2026</p>
+
+<p>BetterHA ("the app") is a native iOS client for Home Assistant. This
+policy explains what data the app handles and, just as importantly, what it
+doesn't.</p>
+
+<h2>Summary</h2>
+<p>BetterHA does not collect, transmit, or sell any personal data. It has no
+backend servers of its own, no analytics, no crash reporting, and no
+advertising. The only network connections the app makes are the ones you
+configure, directly to your own Home Assistant instance(s).</p>
+
+<h2>What the app stores, and where</h2>
+<p><strong>Tab configuration.</strong> The name, local address, and remote
+address you enter for each of your four tabs are stored on-device using
+Apple's standard <code>UserDefaults</code> storage, and also synced via
+Apple's iCloud Key-Value storage so the same settings appear if you install
+BetterHA on another of your own devices signed into the same iCloud
+account. This sync is handled entirely by Apple's iCloud infrastructure
+under your own Apple ID &mdash; this data is never sent to us or to any
+third party, and we have no access to it. You can control iCloud sync for
+BetterHA (or disable it entirely) in your device's iCloud settings.</p>
+
+<p><strong>Home Assistant session data.</strong> When you log into your Home
+Assistant frontend inside the app, your session cookies and local storage
+are kept by iOS's standard <code>WKWebsiteDataStore</code>, the same
+mechanism Safari uses. This keeps you signed in between launches. That data
+is stored only on your device and is only ever sent to the Home Assistant
+address you configured &mdash; never to us.</p>
+
+<h2>What the app sends over the network</h2>
+<p>BetterHA only communicates with the local and remote addresses you enter
+in Settings. It does not talk to any BetterHA-operated server, because no
+such server exists. We &mdash; the developer &mdash; never receive your Home
+Assistant address, credentials, session data, or anything else from the
+app.</p>
+
+<h2>Third parties</h2>
+<p>BetterHA does not integrate any third-party SDKs, analytics services, or
+advertising networks. No data is shared with third parties because none is
+collected in the first place.</p>
+
+<h2>Children's privacy</h2>
+<p>BetterHA does not knowingly collect data from anyone, including children
+under 13, because it does not collect data from anyone at all.</p>
+
+<h2>Your Home Assistant instance</h2>
+<p>Anything you see or do inside the Home Assistant frontend loaded by the
+app is governed by your own Home Assistant instance's configuration and
+security &mdash; not by this app. BetterHA is simply a native window onto
+the web interface you already run.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy changes, the updated version will be posted at this same
+location with a revised effective date.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy can be sent to:
+<a href="mailto:kobus@marneweck.com">kobus@marneweck.com</a></p>
+
+<hr>
+<p class="disclaimer">BetterHA is an independent app and is not affiliated
+with, endorsed by, or sponsored by Home Assistant or Nabu Casa.</p>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Privacy Policy for BetterHA
 
-**Effective date:** August 29, 2026
+**Effective date:** September 4, 2026
 
 BetterHA ("the app") is a native iOS client for Home Assistant. This policy
 explains what data the app handles and, just as importantly, what it doesn't.
@@ -15,10 +15,14 @@ configure, directly to your own Home Assistant instance(s).
 ## What the app stores, and where
 
 **Tab configuration.** The name, local address, and remote address you enter
-for each of your four tabs are stored using Apple's standard on-device
-`UserDefaults` storage. This data never leaves your device and is never sent
-to us or any third party — it's only used locally to know which address to
-connect to.
+for each of your four tabs are stored on-device using Apple's standard
+`UserDefaults` storage, and also synced via Apple's iCloud Key-Value
+storage so the same settings appear if you install BetterHA on another of
+your own devices signed into the same iCloud account. This sync is handled
+entirely by Apple's iCloud infrastructure under your own Apple ID — this
+data is never sent to us or to any third party, and we have no access to
+it. You can control iCloud sync for BetterHA (or disable it entirely) in
+your device's iCloud settings.
 
 **Home Assistant session data.** When you log into your Home Assistant
 frontend inside the app, your session cookies and local storage are kept by
